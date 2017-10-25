@@ -1,0 +1,37 @@
+{
+  "name": "tmpname",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start:dev": "webpack --env=dev --progress --profile --colors --watch",
+    "start:dist": "webpack --env=dist --progress --profile --colors --watch",
+    "build:dev": "webpack --env=dev --progress --profile --colors",
+    "build:dist": "webpack --env=dist --progress --profile --colors"
+  },
+  "main": "./public/bundle.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@uirouter/angularjs": "^1.0.8",
+    "angular": "^1.6.6",
+    "angular-animate": "^1.6.6",
+    "angular-aria": "^1.6.6",
+    "angular-material": "^1.1.5",
+    "angular-messages": "^1.6.6",
+    "angular-ui-sortable": "^0.17.2",
+    "copy-webpack-plugin": "^4.1.1",
+    "css-loader": "^0.28.7",
+    "exports-loader": "^0.6.4",
+    "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "ng-annotate-webpack-plugin": "^0.2.1-pre",
+    "ngstorage": "^0.3.11",
+    "node-sass": "^4.5.3",
+    "on-build-webpack": "^0.1.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.6.0",
+    "webpack-material-design-icons": "^0.1.0",
+    "webpack-merge": "^4.1.0"
+  }
+}

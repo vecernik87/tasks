@@ -1,0 +1,20 @@
+<div>
+    <b>agenda of tasks</b>
+
+    <md-list>
+        <md-list-item ui-sref="app.edit(task)" ng-repeat="task in vm.tasks| orderBy:'priority'" layout="row">
+            <span>{{task.priority}}</span>
+            <div layout="column">
+                <b>{{task.title}}</b>
+                <!--<i>{{task.description}}</i>-->
+            </div>
+        </md-list-item>
+    </md-list>
+    <pre>
+{{vm.tasks| json}}
+    </pre>
+
+    <md-button ui-sref='app.edit({id:null})' class="md-fab md-fab-bottom-right" style="position:fixed !important;">
+        <md-icon>cake</md-icon>
+    </md-button>
+</div>

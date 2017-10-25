@@ -1,0 +1,10 @@
+<div style="background:green;" >
+    <div layout="column">
+        <button ng-click="$storage.counter = $storage.counter + 1">increase counter</button>
+        <button ng-click="$storage.$reset()">reset storage</button>
+        <button ng-click="vm.addTask()">add task</button>
+    </div>
+    <pre>
+{{$storage| json}}
+    </pre>
+</div>

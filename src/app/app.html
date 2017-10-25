@@ -1,0 +1,71 @@
+<div layout="row">
+    <md-sidenav
+        md-component-id="leftMenu"
+        md-is-locked-open="$mdMedia('gt-xs')"
+        md-whiteframe="4"
+        layout="column"
+        >
+        <md-list>
+            <md-list-item ui-sref-active="active" ui-sref='web'>
+                <a>web</a>
+            </md-list-item>
+            <md-list-item ui-sref-active="active" ui-sref='app'>
+                <a>app</a>
+            </md-list-item>
+            <md-list-item ui-sref-active="active" ui-sref='app.agenda'>
+                <a>agenda</a>
+            </md-list-item>
+            <md-list-item ui-sref-active="active" ui-sref='app.tree'>
+                <a>tree</a>
+            </md-list-item>
+            <md-list-item ui-sref-active="active" ui-sref='app.edit({id:"asdd"})'>
+                <a>edit</a>
+            </md-list-item>
+            <md-list-item ui-sref-active="active" ui-sref='app.test'>
+                <a>test</a>
+            </md-list-item>
+        </md-list>
+    </md-sidenav>
+    <div layout="column" flex>
+        <md-toolbar layout="row" class="md-toolbar-tools">
+            <md-button class="md-icon-button" ng-click="vm.toggleMenu('leftMenu')" hide-gt-xs>
+                <md-icon icon="menu">menu</md-icon>
+            </md-button>
+            <h2 flex md-truncate>{{title}}</h2>
+            <!--<span flex></span>-->
+
+            <md-button layout="row" class="usertag">
+                <div class="avatar">
+                    <span>UN</span>
+                </div>
+                <div class="name" hide show-gt-xs>username</div>
+            </md-button>
+        </md-toolbar>
+        <md-content ui-view layout="column" layout-padding flex>
+            loading...
+        </md-content>
+    </div>
+</div>
+<style>
+    md-list-item.active{
+        background:#ddd;
+    }
+    .usertag .avatar{
+        width:36px;
+        height:36px;
+        border-radius: 50%;
+        background-color:green;
+    }
+    /*    .usertag .avatar:before {
+            content: '';
+            padding-left: 50%;
+            padding-top: 50%;
+            float: left;
+        }*/
+    .usertag .name{
+        margin-left: 5px;
+    }
+    .usertag{
+        min-width: unset;
+    }
+</style>
