@@ -9,17 +9,9 @@ Pokud se stane ze potrebujes zmenit nejakou funkci jadra wysiwygu, je treba prip
 
 3. spust si prekladac: ```npm run start:dev```
 
-4. upravuj... 
+4. upravuj...
 
 5. jakmile mas hotovo, je vhodne buildnout produkcni (minimalizovanou) verzi
-
-# Struktura elementů
-
-- kazdy element ma svou slozku: ```/elements/{nazevelementu}/```
-- kazdy element ma soubory:
-- ```{nazevelementu}.js``` (definice elementu)
-- ```{nazevelementu}-preview.html``` (sablona s dizajnem pro editor)
-- ```{nazevelementu}-properties.html``` (sablona s hejblatkama pro editor)
 
 
 # Seznam připravených příkazů pro prekladač

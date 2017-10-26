@@ -1,3 +1,8 @@
+/**
+ * @author Pavel Cernik
+ * @license MIT
+ **/
+
 (function(){
     console.log('storage factory init');
 

@@ -1,12 +1,16 @@
+/**
+ * @author Pavel Cernik
+ * @license MIT
+ **/
 console.warn('webpack common');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
 module.exports = {
 
     entry: {
-//        vendor: "./src/vendor.js",
         tmpname: "./src/tmpname.js",
     }, //relative to root of the application
     output: {
@@ -15,6 +19,17 @@ module.exports = {
     },
     module: {
         loaders: [
+            {
+                test: /src.*\.js$/,
+                use: [
+                    {
+                        loader: 'ng-annotate-loader',
+                        options: {
+                            add: true,
+                        }
+                    }
+                ]
+            },
             {
                 test: /\.scss$/,
                 loader: 'style-loader!css-loader!sass-loader'
@@ -42,16 +57,18 @@ module.exports = {
             }
         }),
         new CopyWebpackPlugin([
-            {
-                from: './src/.htaccess',
-//                to: '.htaccess',
-                toType: 'file'
-            }
+            {context: './src', from: 'icon/*'},
+            {from: './src/service_worker.js', toType: 'file'},
+            {from: './src/manifest.json', toType: 'file'},
+            {from: './src/.htaccess', toType: 'file'},
         ]),
         new HtmlWebpackPlugin({
             hash: true,
             template: './src/index.html',
             filename: 'index.html'
+        }),
+        new ScriptExtHtmlWebpackPlugin({
+            defaultAttribute: 'defer'
         })
     ]
 

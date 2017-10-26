@@ -1,3 +1,7 @@
+/**
+ * @author Pavel Cernik
+ * @license MIT
+ **/
 console.log('webpack distribution');
 var webpack = require('webpack');
 var Merge = require('webpack-merge');
@@ -15,10 +19,10 @@ module.exports = Merge(CommonConfig, {
                 'NODE_ENV': JSON.stringify('production')
             }
         }),
-        new ngAnnotatePlugin({
-            add: true,
-            // other ng-annotate options here
-        }),
+//        new ngAnnotatePlugin({ // using ng-annotate-loader which is faster
+//            add: true,
+//            // other ng-annotate options here
+//        }),
         new webpack.optimize.UglifyJsPlugin({
             /*beautify: false,
              mangle: {

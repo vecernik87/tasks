@@ -1,3 +1,7 @@
+/**
+ * @author Pavel Cernik
+ * @license MIT
+ **/
 (function(){
     console.log('app init');
 

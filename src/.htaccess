@@ -11,10 +11,23 @@ RewriteEngine on
   </ifModule>
 </filesMatch>
 
+####################
+# GZIP COMPRESSION #
+####################
+<ifModule mod_deflate.c>
+  SetOutputFilter DEFLATE
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/x-javascript application/x-httpd-php
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+  BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip
+</ifModule>
 
-# RewriteCond %{HTTPS} !=on
-# RewriteCond %{HTTP_HOST} outfalls.info$
-# RewriteRule ^ https://%{HTTP_HOST} [L,R=302]
+### https redirect
+ RewriteCond %{HTTPS} !=on
+# RewriteCond %{HTTP_HOST} tmpname.tld$
+ RewriteRule ^ https://%{HTTP_HOST} [L,R=302]
 
 # Don't rewrite files or directories
 RewriteCond %{REQUEST_FILENAME} -f [OR]

@@ -1,3 +1,7 @@
+/**
+ * @author Pavel Cernik
+ * @license MIT
+ **/
 (function(){
     console.log('tmpname init');
     // core
@@ -7,9 +11,8 @@
 
     // graphics
     require('angular-material');
-    require('webpack-material-design-icons');
     require('angular-material/angular-material.css');
-
+    require('webpack-material-design-icons');
 
 
 

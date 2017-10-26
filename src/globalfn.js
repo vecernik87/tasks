@@ -23,7 +23,6 @@ window.UUID = (function(){
     return self;
 })();
 
-
 window.stringToColour = function(str){
     var hash = 0;
     for(var i = 0; i < str.length; i++){
