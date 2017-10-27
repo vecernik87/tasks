@@ -1,0 +1,72 @@
+<div>
+    <b>tree</b>
+
+    <div ui-tree="vm.options" data-max-depth='1'>
+        <md-list ui-tree-nodes ng-model="vm.tree" layout="column" layout-align="start stretch">
+            <md-list-item ng-repeat="node in vm.tree" ui-tree-node ng-include="'nodes_renderer.html'" layout="column" layout-align="start stretch">
+
+            </md-list-item>
+        </md-list>
+    </div>
+
+
+    <md-list>
+        <md-list-item ng-repeat="task in vm.tasks| orderBy:'priority'" ui-sref="app.edit(task)" layout="row" >
+            <md-button class="md-icon-button" >
+                <!--ng-click="console.log('clicked');"-->
+                <md-icon class="" >reorder</md-icon>
+            </md-button>
+            <md-list-item-text layout="column" >
+                <b>{{task.title}}</b>
+                <!--<i>{{task.description}}</i>-->
+            </md-list-item-text>
+            <div flex></div>
+            <span>{{task.priority}}</span>
+        </md-list-item>
+    </md-list>
+    <pre>
+{{vm.tasks| json}}
+    </pre>
+</div>
+
+<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_renderer.html">
+    <div ui-tree-handle class="tree-handle tree-node tree-node-content" layout="row">
+<!--    <a class="btn btn-success btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)"><span
+    class="glyphicon"
+    ng-class="{'glyphicon-chevron-right': collapsed,'glyphicon-chevron-down': !collapsed}"></span></a>-->
+    <div>{{node.title}}</div>
+        <div flex></div>
+<!--    <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
+    class="glyphicon glyphicon-remove"></span></a>
+    <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span
+    class="glyphicon glyphicon-plus"></span></a>-->
+    </div>
+    <md-list ui-tree-nodes ng-model="node.nodes" ng-class="{hidden: collapsed}" layout="column" layout-align="start stretch">
+    <md-list-item ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'" layout="column" layout-align="start stretch">
+    </md-list-item>
+    </md-list>
+</script>
+
+<style>
+    md-list-item{
+        border: 1px red dashed !important;
+        /*width:500px;*/
+    }
+    .tree-handle{
+        background-color: #ffa;
+    }
+    .bgdark{
+        background-color: #0c0;
+    }
+    .angular-ui-tree-hidden{
+        display:none;
+    }
+    .angular-ui-tree-drag {
+        position: absolute;
+        pointer-events: none;
+        z-index: 999;
+        background:white;
+        /*        opacity: .8;*/
+    }
+    </style>

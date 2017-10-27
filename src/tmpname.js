@@ -2,6 +2,8 @@
  * @author Pavel Cernik
  * @license MIT
  **/
+"use strict";
+
 (function(){
     console.log('tmpname init');
     // core
@@ -14,10 +16,20 @@
     require('angular-material/angular-material.css');
     require('webpack-material-design-icons');
 
+    // ui
+//    require('jquery');
+//    require('jquery-ui');
+    require("jquery-ui/ui/widgets/sortable");
+    require('angular-ui-sortable');
+//    require('angular-ui-tree');
+//    require('angular-ui-tree/dist/angular-ui-tree.min.css');
+
 
 
     angular.module('tmpname', [
         'ngMaterial',
+//        'ui.tree',
+        'ui.sortable',
         'ui.router',
         'ngStorage',
         'tmpname.app',

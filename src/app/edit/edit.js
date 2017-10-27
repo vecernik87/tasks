@@ -2,6 +2,8 @@
  * @author Pavel Cernik
  * @license MIT
  **/
+"use strict";
+
 (function(){
     angular.module('tmpname.app')
             .config(function($stateProvider){

@@ -2,6 +2,8 @@
  * @author Pavel Cernik
  * @license MIT
  **/
+"use strict";
+
 (function(){
     angular.module('tmpname')
             .config(function($locationProvider, $urlRouterProvider, $localStorageProvider, $compileProvider){

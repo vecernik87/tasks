@@ -2,6 +2,8 @@
  * @author Pavel Cernik
  * @license MIT
  **/
+"use strict";
+
 (function(){
     console.log('app init');
 
@@ -19,6 +21,7 @@
 
     require('./app.config.js');
     require('./agenda/agenda.js');
+    require('./tree/tree.js');
     require('./edit/edit.js');
     require('./test/test.js');
 

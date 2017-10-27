@@ -2,6 +2,7 @@
  * @author Pavel Cernik
  * @license MIT
  **/
+"use strict";
 
 (function(){
     console.log('storage factory init');
@@ -9,6 +10,10 @@
     angular.module('tmpname.storage')
             .factory('storage', storageFactory);
 
+    /**
+     * @function storage
+     * @description This is an angularjs service.
+     */
     function storageFactory($localStorage, $q){
 //        console.warn(UUID.generate());
         var ls = $localStorage.$default({
@@ -66,11 +71,12 @@
                 if(typeof task === 'object' && task !== null){
                     if(task.id){ // saving existing
                         // todo - check if task exists, maybe someone changed the id
-                        ls.tasks[task.id] = task;
                     }else{
                         task.id = getUniqueID();
-                        ls.tasks[task.id] = task;
                     }
+                    ls.tasks[task.id] = angular.copy(task);
+                    console.log('saved');
+                    resolve();
                 }else{
                     reject('task is not object ' + JSON.stringify(task));
                 }

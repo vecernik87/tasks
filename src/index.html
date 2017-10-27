@@ -44,23 +44,27 @@
 
         </script>
     </head>
-    <body ui-view>
-        <div id='page-loading' style='display:block;text-align: center;padding-top:30%;'>
-            <div style="width:60px;margin:auto;">
-                <svg version="1.1" id="L2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
-                <circle fill="none" stroke="#aaa" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="48"></circle>
-                <line fill="none" stroke-linecap="round" stroke="#aaa" stroke-width="4" stroke-miterlimit="10" x1="50" y1="50" x2="85" y2="50.5" transform="rotate(72.0001 50 50)">
-                <animateTransform attributeName="transform" dur="2s" type="rotate" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform>
-                </line>
-                <line fill="none" stroke-linecap="round" stroke="#aaa" stroke-width="4" stroke-miterlimit="10" x1="50" y1="50" x2="49.5" y2="74" transform="rotate(225.6 50 50)">
-                <animateTransform attributeName="transform" dur="15s" type="rotate" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform>
-                </line>
-                </svg>
+    <body>
+        <!--        ui view MUST be separate div as its whole content is replaced.
+                If any script tag is in ui-view, angular will try to keep the tag but it will cause doubleload-->
+        <div ui-view layout-fill>
+            <div id='page-loading' style='display:block;text-align: center;padding-top:30%;'>
+                <div style="width:60px;margin:auto;">
+                    <svg version="1.1" id="L2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                    <circle fill="none" stroke="#aaa" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="48"></circle>
+                    <line fill="none" stroke-linecap="round" stroke="#aaa" stroke-width="4" stroke-miterlimit="10" x1="50" y1="50" x2="85" y2="50.5" transform="rotate(72.0001 50 50)">
+                    <animateTransform attributeName="transform" dur="2s" type="rotate" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform>
+                    </line>
+                    <line fill="none" stroke-linecap="round" stroke="#aaa" stroke-width="4" stroke-miterlimit="10" x1="50" y1="50" x2="49.5" y2="74" transform="rotate(225.6 50 50)">
+                    <animateTransform attributeName="transform" dur="15s" type="rotate" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform>
+                    </line>
+                    </svg>
+                </div>
+                <br>
+                ...loading the app...
+                <br><br>
+                <div id="errorreport" style="color:red"></div>
             </div>
-            <br>
-            ...loading the app...
-            <br><br>
-            <div id="errorreport" style="color:red"></div>
         </div>
     </body>
 

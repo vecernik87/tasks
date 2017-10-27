@@ -15,7 +15,7 @@ module.exports = {
     }, //relative to root of the application
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: '[name].bundle.js'
+        filename: 'js/[name].bundle.js'
     },
     module: {
         loaders: [
@@ -44,22 +44,32 @@ module.exports = {
                 loader: 'html-loader'
             },
             {
-                test: /\.(jpe?g|png|gif|svg|eot|woff|ttf|svg|woff2)$/,
-                loader: "file-loader?name=[name].[ext]&outputPath=assets/"
+                test: /\.(eot|woff|ttf|woff2)$/,
+                loader: "file-loader?name=[name].[ext]&outputPath=font/"
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/,
+                loader: "file-loader?name=[name].[ext]&outputPath=img/"
             },
         ]
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
+            "window.$": "jquery"
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendors',
             minChunks: function(module){
-                return isExternal(module);
+                return containString(module, 'node_modules');
             }
         }),
         new CopyWebpackPlugin([
             {context: './src', from: 'icon/*'},
-            {from: './src/service_worker.js', toType: 'file'},
-            {from: './src/manifest.json', toType: 'file'},
+            {from: './src/service_worker.js', to: ''},
+            {from: './src/manifest.json', to: ''},
             {from: './src/.htaccess', toType: 'file'},
         ]),
         new HtmlWebpackPlugin({
@@ -75,12 +85,11 @@ module.exports = {
 }
 
 
-function isExternal(module){
+function containString(module, string){
     var context = module.context;
-
     if(typeof context !== 'string'){
         return false;
     }
 
-    return context.indexOf('node_modules') !== -1;
+    return context.indexOf(string) !== -1;
 }

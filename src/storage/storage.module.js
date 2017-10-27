@@ -2,6 +2,8 @@
  * @author Pavel Cernik
  * @license MIT
  **/
+"use strict";
+
 (function(){
     console.log('storage module init');
 

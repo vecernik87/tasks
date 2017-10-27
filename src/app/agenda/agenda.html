@@ -1,20 +1,71 @@
 <div>
     <b>agenda of tasks</b>
 
-    <md-list>
-        <md-list-item ui-sref="app.edit(task)" ng-repeat="task in vm.tasks| orderBy:'priority'" layout="row">
-            <span>{{task.priority}}</span>
-            <div layout="column">
+    <md-list ui-sortable="vm.options" ng-model="vm.tasks">
+        <md-list-item  class="myItem" ng-repeat="task in vm.tasks" ui-sref="app.edit(task)">
+            <!--<md-button class="md-icon-button" >-->
+            <div class="myHandle">
+                <md-icon>reorder</md-icon>
+            </div>
+            <!--</md-button>-->
+
+            <md-list-item-text class="myLink" flex>
                 <b>{{task.title}}</b>
                 <!--<i>{{task.description}}</i>-->
-            </div>
+            </md-list-item-text>
+            <span>{{task.priority}}</span>
+            <md-divider ng-if="!$last"></md-divider>
         </md-list-item>
     </md-list>
+
     <pre>
 {{vm.tasks| json}}
     </pre>
 
     <md-button ui-sref='app.edit({id:null})' class="md-fab md-fab-bottom-right" style="position:fixed !important;">
-        <md-icon>cake</md-icon>
+        <md-icon>add</md-icon>
     </md-button>
 </div>
+
+<style>
+    md-list-item.angular-ui-tree-hidden{
+        display:none;
+    }
+    .angular-ui-tree-drag {
+        position: absolute;
+        pointer-events: none;
+        z-index: 999;
+        background:white;
+        /*        opacity: .8;*/
+    }
+    .myPlaceholder {
+        background-color: #eaeaea;
+        -moz-box-shadow:    inset 0 0 10px #aaa;
+        -webkit-box-shadow: inset 0 0 10px #aaa;
+        box-shadow:         inset 0 0 10px #aaa;
+    }
+    .myHelper {
+        cursor: move;
+        background-color: #fff;
+    }
+    .myHelper div{
+        pointer-events: none;
+    }
+    .myHandle {
+        z-index: 1;
+        cursor: move;
+        opacity:0;
+        margin-right: 10px;
+    }
+    .myItem:hover .myHandle,
+    .myItem.myHelper .myHandle {
+        opacity:1;
+
+    }
+    /*    .myItem .myLink{
+            height:48px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+
+        }*/
+</style>

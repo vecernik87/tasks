@@ -2,7 +2,7 @@
  * @author Pavel Cernik
  * @license MIT
  **/
-
+"use strict";
 
 this.addEventListener('install', function(event){
     console.info('[SW] installing....', event);

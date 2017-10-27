@@ -5,22 +5,43 @@
         md-whiteframe="4"
         layout="column"
         >
+        <div layout="column">
+            <h1 layout-padding class="md-headline">TASKS</h1>
+            <user-card>
+
+            </user-card>
+
+            <md-button layout="row" class="usertag">
+                <div class="avatar">
+                    <span>UN</span>
+                </div>
+                <div class="name" hide show-gt-xs>username</div>
+            </md-button>
+            <span></span>
+        </div>
         <md-list>
-            <md-list-item ui-sref-active="active" ui-sref='web'>
-                <a>web</a>
+            <md-subheader>main navigation</md-subheader>
+            <md-list-item>
+                <md-list layout="row" flex>
+                    <md-list-item ui-sref-active="active" ui-sref='web' flex="50">web</md-list-item>
+                    <md-list-item ui-sref-active="active" ui-sref='app' flex="50">app</md-list-item>
+
+                </md-list>
             </md-list-item>
-            <md-list-item ui-sref-active="active" ui-sref='app'>
-                <a>app</a>
-            </md-list-item>
-            <md-list-item ui-sref-active="active" ui-sref='app.agenda'>
+
+            <md-divider></md-divider>
+            <md-subheader>pages</md-subheader>
+            <md-list-item ui-sref-active="active" ui-sref='app.agenda' ng-click="vm.toggleMenu('leftMenu')">
                 <a>agenda</a>
             </md-list-item>
-            <md-list-item ui-sref-active="active" ui-sref='app.tree'>
+            <md-list-item ui-sref-active="active" ui-sref='app.tree' ng-click="vm.toggleMenu('leftMenu')">
                 <a>tree</a>
             </md-list-item>
-            <md-list-item ui-sref-active="active" ui-sref='app.edit({id:"asdd"})'>
+            <md-list-item ui-sref-active="active" ui-sref='app.edit({id:"asdd"})' ng-click="vm.toggleMenu('leftMenu')">
                 <a>edit</a>
             </md-list-item>
+            <md-divider></md-divider>
+            <md-subheader class="md-no-sticky">testing</md-subheader>
             <md-list-item ui-sref-active="active" ui-sref='app.test'>
                 <a>test</a>
             </md-list-item>
@@ -32,16 +53,16 @@
                 <md-icon icon="menu">menu</md-icon>
             </md-button>
             <h2 flex md-truncate>{{title}}</h2>
-            <!--<span flex></span>-->
-
             <md-button layout="row" class="usertag">
                 <div class="avatar">
                     <span>UN</span>
                 </div>
                 <div class="name" hide show-gt-xs>username</div>
             </md-button>
+            <!--<span flex></span>-->
         </md-toolbar>
-        <md-content ui-view layout="column" layout-padding flex>
+        <md-content ui-view layout="column" flex>
+            <!--layout-padding-->
             loading...
         </md-content>
     </div>
